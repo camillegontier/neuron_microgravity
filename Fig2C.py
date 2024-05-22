@@ -21,14 +21,14 @@ num_neurons     = 100
 area            = 20000*umetre**2
 Cm              = 1*ufarad*cm**-2 * area
 gl              = 5e-5*siemens*cm**-2 * area
-El              = -65*mV
+El              = -60*mV
 EK              = -90*mV
 ENa             = 50*mV
 g_na            = 100*msiemens*cm**-2 * area
 g_kd            = 30*msiemens*cm**-2 * area
 VT              = -63*mV
 
-lambda_values   = np.linspace(0.5,2.5,5)
+lambda_values = np.linspace(0.75,2,6)
 
 # Loop over the values of lambda ##############################################
 
@@ -47,8 +47,8 @@ for idx, lambd in enumerate(lambda_values):
     ''')
     # Threshold and refractoriness are only used for spike counting
     group = NeuronGroup(num_neurons, eqs,
-                        threshold='v > -40*mV',
-                        refractory='v > -40*mV',
+                        threshold='v > -50*mV',
+                        refractory='v > -50*mV',
                         method='exponential_euler')
     group.v = El
     group.I = '0.7*nA * i / num_neurons'
