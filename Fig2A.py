@@ -29,7 +29,7 @@ g_na            = 100*msiemens*cm**-2 * area
 g_kd            = 30*msiemens*cm**-2 * area
 VT              = -63*mV
 
-lambda_values   = np.linspace(0.5,3,6)
+lambda_values = np.linspace(0.75,2,6)
 fr_res = np.zeros(len(lambda_values))
 
 # Loop over the values of lambda ##############################################
