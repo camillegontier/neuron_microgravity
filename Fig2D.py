@@ -15,6 +15,10 @@ from brian2 import *
 
 # Parameters ##################################################################
 
+seed(4321)
+np.random.seed(4321)
+
+
 duration        = 1*second
 num_neurons     = 4000
 
@@ -37,7 +41,7 @@ we = 6*nS  # excitatory synaptic weight
 wi = 67*nS  # inhibitory synaptic weight
 
 # lambda_values   = np.linspace(1,2,5)
-EI_ratio_values = [0.70,0.70,0.70,0.70,0.70,0.70,0.70,0.70]
+EI_ratio_values = np.repeat(0.8,30)
 lambda_values   = np.linspace(0.5,2,7)
 connect_prob = 0.02
 
