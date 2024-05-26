@@ -12,6 +12,9 @@ from brian2 import *
 
 # Parameters ##################################################################
 
+seed(4321)
+np.random.seed(4321)
+
 duration = 20*second
 # Neuronal population
 N_E = 1000
