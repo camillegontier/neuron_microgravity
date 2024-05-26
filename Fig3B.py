@@ -23,7 +23,7 @@ C = 200*pF
 # Total leak capacitance
 gL = 10*nS
 # Effective rest potential
-EL = -58*mV
+EL = -60*mV
 # Threshold slope factor
 DeltaT = 2*mV
 # Effective threshold potential
@@ -31,19 +31,17 @@ VT = -50*mV
 # Conductance
 a = 2*nS
 # Time constant
-tauw = 120*msecond
+tauw = 800*msecond
 # Adaptation
-b = 100*pA
+b = 30*pA
 # Reset potential
 Vr = -46*mV
-# Noise
-# sigma = 1*mV
 # External input
-I_values = 210*pA
+I_values = 102*pA
 
 # Synaptic parameters
-connect_prob = 0.00
-we = 0*mV
+connect_prob = 0.02
+we = 0.5*mV
 
 # Equations ###################################################################
 
@@ -73,6 +71,20 @@ G_E.V = 'EL+EL*rand() * 0.1 '
 
 run(duration)
 
+print(spikemon.count[0] / duration)
+spike_trains = spikemon.spike_trains()
+spike_trains_ = spike_trains[0]/msecond
+is_in_burst_idx = np.where(spike_trains_[1:] - spike_trains_[:-1] < 20)[0]
+if len(is_in_burst_idx)>0:
+    print((len(np.where(np.diff(is_in_burst_idx)>1)[0])+1) / duration)
+    
+print(spikemon.count[1] / duration)
+spike_trains = spikemon.spike_trains()
+spike_trains_ = spike_trains[1]/msecond
+is_in_burst_idx = np.where(spike_trains_[1:] - spike_trains_[:-1] < 20)[0]
+if len(is_in_burst_idx)>0:
+    print((len(np.where(np.diff(is_in_burst_idx)>1)[0])+1) / duration)
+    
 # Results #####################################################################
 
 fig,axs=plt.subplots(nrows=2,ncols=1,sharex=True)
