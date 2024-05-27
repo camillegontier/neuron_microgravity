@@ -41,7 +41,7 @@ I_values = 102*pA
 
 # Synaptic parameters
 connect_prob = 0.02
-we = 0.5*mV
+we = 0.3*mV
 sigma = 1*mV
 tau_E = 0.01*second
 
@@ -73,19 +73,17 @@ G_E.V = 'EL+EL*rand() * 0.1 '
 
 run(duration)
 
-print(spikemon.count[0] / duration)
+print(np.mean(spikemon.count / duration))
+print(np.std(spikemon.count / duration))
+burst_results = []
 spike_trains = spikemon.spike_trains()
-spike_trains_ = spike_trains[0]/msecond
-is_in_burst_idx = np.where(spike_trains_[1:] - spike_trains_[:-1] < 20)[0]
-if len(is_in_burst_idx)>0:
-    print((len(np.where(np.diff(is_in_burst_idx)>1)[0])+1) / duration)
-    
-print(spikemon.count[1] / duration)
-spike_trains = spikemon.spike_trains()
-spike_trains_ = spike_trains[1]/msecond
-is_in_burst_idx = np.where(spike_trains_[1:] - spike_trains_[:-1] < 20)[0]
-if len(is_in_burst_idx)>0:
-    print((len(np.where(np.diff(is_in_burst_idx)>1)[0])+1) / duration)
+for i in range(N_E):
+    spike_trains_ = spike_trains[i]/msecond
+    is_in_burst_idx = np.where(spike_trains_[1:] - spike_trains_[:-1] < 20)[0]
+    if len(is_in_burst_idx)>0:
+        burst_results.append((len(np.where(np.diff(is_in_burst_idx)>1)[0])+1) / duration)
+print(np.mean(burst_results))
+print(np.std(burst_results))
     
 # Results #####################################################################
 
