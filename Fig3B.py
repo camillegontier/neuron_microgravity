@@ -42,11 +42,13 @@ I_values = 102*pA
 # Synaptic parameters
 connect_prob = 0.02
 we = 0.5*mV
+sigma = 1*mV
+tau_E = 0.01*second
 
 # Equations ###################################################################
 
 eqs_E = Equations('''
-dV/dt = (-gL*(V-EL) + gL*DeltaT*exp((V-VT)/DeltaT) + I - w)/C : volt
+dV/dt = (-gL*(V-EL) + gL*DeltaT*exp((V-VT)/DeltaT) + I - w)/C  + sigma*sqrt(2/tau_E)*xi : volt
 dw/dt = (a*(V-EL) - w)/tauw : amp
 I : amp
 ''')
