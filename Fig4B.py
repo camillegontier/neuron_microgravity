@@ -109,8 +109,8 @@ axs[1].fill_between(I_lambda/pA,
                       np.mean(res_bursts,axis=(0,1))-np.std(res_bursts,axis=(0,1))/np.sqrt((n_samples)), alpha=0.2)
 
 
-axs[0].set_xlabel(r'$R_m I_{\lambda}$ [V]' )
-axs[1].set_xlabel(r'$R_m I_{\lambda}$ [V]' )
+axs[0].set_xlabel(r'$I_{\lambda}$ [pA]' )
+axs[1].set_xlabel(r'$I_{\lambda}$ [pA]' )
 axs[0].set_title('Firing rates' )
 axs[1].set_title('Burst rates' )
 axs[0].set_ylabel(r'[$s^{-1}$]')
