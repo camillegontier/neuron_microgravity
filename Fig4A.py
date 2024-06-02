@@ -82,9 +82,9 @@ for lambda_idx,I_lamb in enumerate(I_lambda):
         
     # Results #####################################################################
     
-    axs[lambda_idx].plot(spikemon.t/ms, spikemon.i, '.k', markersize=0.5)
+    axs[lambda_idx].plot(0.001*spikemon.t/ms, spikemon.i, '.k', markersize=0.5)
     
-    axs[1].set_xlabel('Time [ms]')
+    axs[1].set_xlabel('Time [s]')
     axs[1].set_ylabel('Units')
     axs[0].set_ylabel('Units')
     
