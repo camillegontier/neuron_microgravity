@@ -42,7 +42,7 @@ wi = 67*nS  # inhibitory synaptic weight
 
 # lambda_values   = np.linspace(1,2,5)
 EI_ratio_values = np.repeat(0.8,30)
-lambda_values   = np.linspace(0.5,2,7)
+lambda_values   = np.linspace(0.5,1.5,7)
 connect_prob = 0.02
 
 results = np.zeros((num_neurons,len(lambda_values),len(EI_ratio_values)))

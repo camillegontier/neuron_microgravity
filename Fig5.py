@@ -15,20 +15,23 @@ from brian2 import *
 
 # Parameters ##################################################################
 
+seed(4321)
+np.random.seed(4321)
+
 duration        = 2*second
 num_neurons     = 5
 
 area            = 20000*umetre**2
 Cm              = 1*ufarad*cm**-2 * area
 gl              = 5e-5*siemens*cm**-2 * area
-El              = -65*mV
+El              = -60*mV
 EK              = -90*mV
 ENa             = 50*mV
 g_na            = 100*msiemens*cm**-2 * area
 g_kd            = 30*msiemens*cm**-2 * area
 VT              = -63*mV
 
-lambda_values   = np.linspace(0.5,3,6)
+lambda_values   = np.linspace(0.75,2,6)
 
 nb_samples = 20
 
@@ -70,8 +73,8 @@ for idx_sample in range(nb_samples):
         ''')
         # Threshold and refractoriness are only used for spike counting
         group = NeuronGroup(num_neurons, eqs,
-                            threshold='v > -40*mV',
-                            refractory='v > -40*mV',
+                            threshold='v > -50*mV',
+                            refractory='v > -50*mV',
                             method='exponential_euler')
         group.v = El
         group.I = '0.7*nA * (i+1) / num_neurons'
@@ -97,7 +100,7 @@ for i in range(len(lambda_values)):
     
     xlabel('I [nA]')
     ylabel(r'Firing rate [$s^{-1}$]')
-    plt.xticks(np.arange(num_neurons)+2*barWidth, [round(0.7 * (i+1) / num_neurons,2) for i in range(num_neurons)])
+    plt.xticks(np.arange(num_neurons)+2.5*barWidth, [round(0.7 * (i+1) / num_neurons,2) for i in range(num_neurons)])
     legend()
     grid()
 savefig("Fig5.png", dpi=300)  
