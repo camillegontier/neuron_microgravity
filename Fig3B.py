@@ -88,12 +88,12 @@ print(np.std(burst_results))
 # Results #####################################################################
 
 fig,axs=plt.subplots(nrows=2,ncols=1,sharex=True)
-axs[0].plot(M.t/ms,M.V[0]/mV)
+axs[0].plot(0.001*M.t/ms,M.V[0]/mV)
 axs[0].axhline(y=VT/mV,linestyle='--',c='k')
 axs[1].axhline(y=VT/mV,linestyle='--',c='k')
 
-axs[1].plot(M.t/ms,M.V[1]/mV)
-axs[1].set_xlabel('Time [ms]')
+axs[1].plot(0.001*M.t/ms,M.V[1]/mV)
+axs[1].set_xlabel('Time [s]')
 axs[0].set_ylabel('V [mV]')
 axs[1].set_ylabel('V [mV]')
 axs[0].grid()
