@@ -49,7 +49,7 @@ for lambda_idx, lambda_value in enumerate(lambda_values):
     axs[0].plot(group.v/mV, group.tau_n[:]/ms, label=r"$\tau_n (V)$",linestyle=linestyle,c='tab:orange',linewidth = linewidth)
     axs[0].plot(group.v/mV, group.tau_h[:]/ms, label=r"$\tau_h (V)$",linestyle=linestyle,c='tab:green',linewidth = linewidth)
     axs[0].set_xlabel('[mV]')
-    axs[0].set_ylabel(r'[$s^{-1}$]')
+    axs[0].set_ylabel('[ms]')
     if lambda_idx == 0:
         axs[0].legend()
     
