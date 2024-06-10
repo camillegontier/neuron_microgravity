@@ -65,4 +65,4 @@ for lambda_idx, lambda_value in enumerate(lambda_values):
 axs[0].grid()
 axs[1].grid()
 fig.tight_layout()
-plt.savefig('Fig1B.png',dpi=300)
+plt.savefig('Fig1B.png',dpi=200)
