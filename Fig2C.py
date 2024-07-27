@@ -74,7 +74,7 @@ for idx, lambd in enumerate(lambda_values):
     xlabel("Time [s]")
     xlim(0, 0.07)
     ylabel(r'$P_K$ [-]')
-    title('I = ' + str(0.7*(jj/num_neurons)) + ' [nA]')
+    title('K (I = ' + str(0.7*(jj/num_neurons)) + ' [nA])')
     # legend()
     grid()
     
@@ -83,7 +83,7 @@ for idx, lambd in enumerate(lambda_values):
     xlabel("Time [s]")
     xlim(0, 0.07)
     ylabel(r'$P_{Na}$ [-]')
-    title('I = ' + str(0.7*(jj/num_neurons)) + ' [nA]')
+    title('Na (I = ' + str(0.7*(jj/num_neurons)) + ' [nA])')
     grid()
     
     subplot(223)
