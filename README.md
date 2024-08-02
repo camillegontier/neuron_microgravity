@@ -1,6 +1,6 @@
 # neuron_microgravity
 
-Matlab and Python files used in the following paper: [Gontier, C., Kalinski, L., Striebel, J., Sturm, M., Meerholz, Z., Schunk, S., ... & Liemersdorf, C. (2024). A computational model of altered neuronal activity in altered gravity. bioRxiv.](https://www.biorxiv.org/content/10.1101/2024.07.30.605832v1)
+Python files used in the following paper: [Gontier, C., Kalinski, L., Striebel, J., Sturm, M., Meerholz, Z., Schunk, S., ... & Liemersdorf, C. (2024). A computational model of altered neuronal activity in altered gravity. bioRxiv.](https://www.biorxiv.org/content/10.1101/2024.07.30.605832v1)
 
 ## Cite us
 
