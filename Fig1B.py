@@ -10,6 +10,7 @@ Created on Sat Dec  9 19:49:52 2023
 # Packages ####################################################################
 
 from brian2 import *
+matplotlib.rcParams.update({'font.size': 14})
 
 # Parameters ##################################################################
 
@@ -18,7 +19,7 @@ lambda_values = [1,1.5]
 
 # Results #####################################################################
 
-fig,axs=plt.subplots(nrows=1,ncols=2,sharex=True)
+fig,axs=plt.subplots(nrows=1,ncols=2,sharex=True, figsize=(8,4))
 linestyles = ['-','--']
 linewidths = [1,3]
 
@@ -53,7 +54,6 @@ for lambda_idx, lambda_value in enumerate(lambda_values):
     if lambda_idx == 0:
         axs[0].legend()
     
-    
     axs[1].plot(group.v/mV, group.m_infty[:], label=r"$m_{\infty} (V)$",linestyle=linestyle,c='tab:blue',linewidth = linewidth)
     axs[1].plot(group.v/mV, group.n_infty[:], label=r"$n_{\infty} (V)$",linestyle=linestyle,c='tab:orange',linewidth = linewidth)
     axs[1].plot(group.v/mV, group.h_infty[:], label=r"$h_{\infty} (V)$",linestyle=linestyle,c='tab:green',linewidth = linewidth)
@@ -61,8 +61,7 @@ for lambda_idx, lambda_value in enumerate(lambda_values):
     if lambda_idx == 0:
         axs[1].legend()
     
-
 axs[0].grid()
 axs[1].grid()
 fig.tight_layout()
-plt.savefig('Fig1B.png',dpi=200)
+plt.savefig('Fig1B.png',dpi=300)
