@@ -55,7 +55,7 @@ res_bursts = np.zeros((N_E,n_samples,len(we_lambda)))
 
 # Example voltages
 from cycler import cycler
-plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(we_lambda)).colors)
+plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(we_lambda)+1).colors)
 fig,axs=plt.subplots(nrows=2,ncols=1,sharex=True,sharey=True)
 
 for n in range(n_samples):
@@ -118,7 +118,7 @@ for n in range(n_samples):
             axs[0].set_xlim([2.0, 2.84])
             axs[0].set_ylim([-70, 5])
             fig.tight_layout()
-            savefig("Fig6B.svg", dpi=300) 
+            savefig("Fig4B.svg", dpi=300) 
             
 # Results #####################################################################
 
@@ -148,5 +148,5 @@ axs[0].grid()
 # axs[1].legend()
 axs[1].grid()
 fig.tight_layout()
-savefig("Fig6A.svg", dpi=300) 
+savefig("Fig4A.svg", dpi=300) 
 
