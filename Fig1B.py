@@ -14,11 +14,12 @@ from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
 from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 from brian2 import *
 # %matplotlib qt
+matplotlib.rcParams.update({'font.size': 13})
 
 # Parameters ##################################################################
 
 duration        = 2*second
-num_neurons     = 50
+num_neurons     = 100
 
 area            = 20000*umetre**2
 Cm              = 1*ufarad*cm**-2 * area
@@ -68,7 +69,7 @@ for idx, lambd in enumerate(lambda_values):
     jj = round(num_neurons/2)
     
     from cycler import cycler
-    plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(lambda_values)).colors)
+    plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(lambda_values)+1).colors)
     
     tt = np.arange(0,len(M_v.v[jj,:]))*1e-4
  
@@ -86,13 +87,12 @@ ax2.grid()
 ax2.tick_params(labelleft=False, labelbottom=False)
 axs.set_xlabel("Time [s]")
 axs.set_ylabel('V [V]')
-axs.legend()
 axs.grid()
 
-mark_inset(axs, ax2, loc1=2, loc2=4, fc="none", ec="0.5")
+mark_inset(axs, ax2, loc1=2, loc2=3, fc="none", ec="0.1",linewidth=2)
 
 fig.tight_layout()
-savefig("Fig2B.png", dpi=300)     
+savefig("Fig1B.svg", dpi=300)     
 
 
     

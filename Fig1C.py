@@ -12,6 +12,7 @@ Created on Sun Sep 10 07:50:01 2023
 
 from brian2 import *
 # %matplotlib qt
+matplotlib.rcParams.update({'font.size': 13})
 
 # Parameters ##################################################################
 
@@ -64,7 +65,7 @@ for idx, lambd in enumerate(lambda_values):
     jj = round(num_neurons/2)
     
     from cycler import cycler
-    plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(lambda_values)).colors)
+    plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(lambda_values)+1).colors)
     
     tt = np.arange(0,len(M_K.P_K[jj,:]))*1e-4
 
@@ -74,7 +75,7 @@ for idx, lambd in enumerate(lambda_values):
     xlabel("Time [s]")
     xlim(0, 0.07)
     ylabel(r'$P_K$ [-]')
-    title('K (I = ' + str(0.7*(jj/num_neurons)) + ' [nA])')
+    # title('K (I = ' + str(0.7*(jj/num_neurons)) + ' [nA])')
     # legend()
     grid()
     
@@ -83,7 +84,7 @@ for idx, lambd in enumerate(lambda_values):
     xlabel("Time [s]")
     xlim(0, 0.07)
     ylabel(r'$P_{Na}$ [-]')
-    title('Na (I = ' + str(0.7*(jj/num_neurons)) + ' [nA])')
+    # title('Na (I = ' + str(0.7*(jj/num_neurons)) + ' [nA])')
     grid()
     
     subplot(223)
@@ -102,4 +103,4 @@ for idx, lambd in enumerate(lambda_values):
     
     tight_layout()
     
-savefig("Fig2C.png", dpi=300)     
+savefig("Fig1C.svg", dpi=300)     

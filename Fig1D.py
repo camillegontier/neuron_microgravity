@@ -12,6 +12,7 @@ Created on Sun Sep 10 07:49:50 2023
 
 from brian2 import *
 # %matplotlib qt
+matplotlib.rcParams.update({'font.size': 13})
 
 # Parameters ##################################################################
 
@@ -108,30 +109,15 @@ for idx_lambd, lambd in enumerate(lambda_values):
             
 fig,axs=plt.subplots(nrows=1,ncols=2,sharex=True,figsize=(6.4,4))
 
-# from cycler import cycler
-# plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(EI_ratio_values)).colors)      
-
-# for i in range(len(EI_ratio_values)):
-
-# axs[0].plot(lambda_values,np.mean(results[:,:,i],axis=0), label = 'E/I ratio = ' + str(round(EI_ratio_values[i]*100)) + '%')
-# axs[0].fill_between(lambda_values,
-#                       np.mean(results[:,:,i],axis=0)+np.std(results[:,:,i],axis=0)/np.sqrt(num_neurons), 
-#                       np.mean(results[:,:,i],axis=0)-np.std(results[:,:,i],axis=0)/np.sqrt(num_neurons), alpha=0.2)
-
-# axs[1].plot(lambda_values,np.mean(results_bursts[:,:,i],axis=0), label = 'E/I ratio = ' + str(round(EI_ratio_values[i]*100)) + '%')
-# axs[1].fill_between(lambda_values,
-#                       np.mean(results_bursts[:,:,i],axis=0)+np.std(results_bursts[:,:,i],axis=0)/np.sqrt(num_neurons), 
-#                       np.mean(results_bursts[:,:,i],axis=0)-np.std(results_bursts[:,:,i],axis=0)/np.sqrt(num_neurons), alpha=0.2)
-
-axs[0].plot(lambda_values,np.mean(results,axis=(0,2)))
+axs[0].plot(lambda_values,np.mean(results,axis=(0,2)),c='tab:blue')
 axs[0].fill_between(lambda_values,
                       np.mean(results,axis=(0,2))+np.std(results,axis=(0,2))/np.sqrt(len(EI_ratio_values)), 
-                      np.mean(results,axis=(0,2))-np.std(results,axis=(0,2))/np.sqrt(len(EI_ratio_values)), alpha=0.2)
+                      np.mean(results,axis=(0,2))-np.std(results,axis=(0,2))/np.sqrt(len(EI_ratio_values)), alpha=0.2,color='tab:blue')
 
-axs[1].plot(lambda_values,np.mean(results_bursts,axis=(0,2)))
+axs[1].plot(lambda_values,np.mean(results_bursts,axis=(0,2)),c='tab:blue')
 axs[1].fill_between(lambda_values,
                       np.mean(results_bursts,axis=(0,2))+np.std(results_bursts,axis=(0,2))/np.sqrt(len(EI_ratio_values)), 
-                      np.mean(results_bursts,axis=(0,2))-np.std(results_bursts,axis=(0,2))/np.sqrt(len(EI_ratio_values)), alpha=0.2)
+                      np.mean(results_bursts,axis=(0,2))-np.std(results_bursts,axis=(0,2))/np.sqrt(len(EI_ratio_values)), alpha=0.2,color='tab:blue')
 
 
 axs[0].set_xlabel(r'$\lambda$ [-]' )
@@ -150,20 +136,6 @@ axs[1].grid()
 axs[0].axvline(x=1.0, color='k', linestyle='--')
 axs[1].axvline(x=1.0, color='k', linestyle='--')
 fig.tight_layout()
-savefig("Fig2D.png", dpi=300) 
+savefig("Fig1D.svg", dpi=300) 
     
-# savefig("Plot4.png", dpi=300)  
 
-# plt.figure()
-# plot(M.t/ms, M.v[1]/mV)
-# plot(M.t/ms, M.v[10]/mV)
-# plot(M.t/ms, M.v[100]/mV)
-# xlabel('t (ms)')
-# ylabel('v (mV)')
-# show() 
-
-# plt.figure()
-# plot(monitor.t/ms, monitor.i, ',k')
-# xlabel('Time (ms)')
-# ylabel('Neuron index')
-# show()

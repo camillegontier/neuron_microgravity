@@ -12,6 +12,7 @@ Created on Sun Sep 10 07:49:50 2023
 
 from brian2 import *
 # %matplotlib qt
+matplotlib.rcParams.update({'font.size': 13})
 
 # Parameters ##################################################################
 
@@ -34,7 +35,7 @@ fr_res = np.zeros(len(lambda_values))
 
 # Loop over the values of lambda ##############################################
 from cycler import cycler
-plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(lambda_values)).colors)
+plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(lambda_values)+1).colors)
 fig,axs=plt.subplots(nrows=1,ncols=1,sharex=True,figsize=(6.4,4))
 
 for idx, lambd in enumerate(lambda_values):
@@ -68,12 +69,12 @@ for idx, lambd in enumerate(lambda_values):
     axs.plot(group.I/nA, monitor.count / duration, label = r'$\lambda = $' + str(lambd))
     fr_res[idx] = (monitor.count[-1] / duration)*second
     
-left, bottom, width, height = [0.65, 0.25, 0.28, 0.28]
+left, bottom, width, height = [0.65, 0.31, 0.28, 0.28]
 ax2  = fig.add_axes([left, bottom, width, height])
 ax2.plot(lambda_values,fr_res, color='k')
 ax2.axvline(x=1.0, color='k', linestyle='--')
 ax2.set_xlabel(r'$\lambda$ [-]')
-ax2.set_ylabel(r'Firing rate [$s^{-1}$]')
+ax2.set_ylabel(r'F. rate')
 ax2.grid()
 
 axs.set_xlabel('I [nA]')
@@ -83,4 +84,4 @@ axs.grid()
     # show()
 
 fig.tight_layout()
-savefig("Fig2A.png", dpi=300)   
+savefig("Fig1A.svg", dpi=300)   
