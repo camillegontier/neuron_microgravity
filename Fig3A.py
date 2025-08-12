@@ -90,4 +90,4 @@ for lambda_idx,I_lamb in enumerate(I_lambda):
     axs[0].set_ylabel('Units')
     
 fig.tight_layout()
-savefig("Fig3A.svg", dpi=300) 
+savefig("Fig3A.png", dpi=300) 

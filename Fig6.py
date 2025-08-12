@@ -12,6 +12,7 @@ Created on Sun Sep 10 07:49:50 2023
 
 from brian2 import *
 # %matplotlib qt
+matplotlib.rcParams.update({'font.size': 14})
 
 # Parameters ##################################################################
 
@@ -36,7 +37,7 @@ lambda_values   = np.linspace(0.75,2,6)
 nb_samples = 20
 
 from cycler import cycler
-plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(lambda_values)).colors)
+plt.rcParams['axes.prop_cycle'] = cycler('color', plt.get_cmap('viridis',len(lambda_values)+1).colors)
 fig,axs=plt.subplots(nrows=1,ncols=1,sharex=True,figsize=(6.4,4))
 
 results = np.zeros((nb_samples,len(lambda_values),num_neurons))
@@ -103,7 +104,9 @@ for i in range(len(lambda_values)):
     plt.xticks(np.arange(num_neurons)+2.5*barWidth, [round(0.7 * (i+1) / num_neurons,2) for i in range(num_neurons)])
     legend()
     grid()
-savefig("Fig5.png", dpi=300)  
+fig.tight_layout()
+
+savefig("Fig6.svg", dpi=300)  
 
 # plt.figure()
 # for i in range(len(lambda_values)):

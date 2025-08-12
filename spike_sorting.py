@@ -28,14 +28,14 @@ import spikeinterface.widgets as sw
 from pprint import pprint
 import spikeinterface
 from spikeinterface.postprocessing import compute_principal_components
-from spikeinterface.qualitymetrics import (compute_snrs, compute_firing_rates,
-    compute_isi_violations, calculate_pc_metrics, compute_quality_metrics)
+# from spikeinterface.qualitymetrics import (compute_snrs, compute_firing_rates,
+#     compute_isi_violations, calculate_pc_metrics, compute_quality_metrics)
 # %matplotlib qt
 
 # Parameters ##################################################################
 
 # Path and name of the file to be read
-file_name = "data\MP12_MicroG1.h5"
+file_name = "data/MP12_Baseline3.h5"
 
 # My data were recorded from 2 chips, each having 60 channels. Here, I am 
 # specifying which chip I will study
@@ -79,7 +79,7 @@ se.BinaryRecordingExtractor.write_recording(recording, file_paths)
 recording = se.BinaryRecordingExtractor(file_paths=file_paths, sampling_frequency=sampling_frequency, num_channels=num_channels, dtype=recording.dtype)
 
 # Plots the first 5 seconds of recordings 
-w_ts = sw.plot_traces(recording, time_range=(0, 5))
+# w_ts = sw.plot_traces(recording, time_range=(0, 5))
 
 # Probe creation ##############################################################
 
@@ -97,12 +97,12 @@ square_probe.set_device_channel_indices(channel_indices)
 recording = recording.set_probe(square_probe)
 
 # Displays the electrodes
-plot_probe(square_probe, with_contact_id=True, with_device_index=True)
-plt.show()
-plt.figure
+# plot_probe(square_probe, with_contact_id=True, with_device_index=True)
+# plt.show()
+# plt.figure
 plot_probe(square_probe)
 plt.title('')
-plt.savefig("probe.png", dpi=300) 
+plt.savefig("probe.svg", dpi=300) 
 
 # Data preprocessing ##########################################################
 
@@ -125,7 +125,7 @@ w_rs = sw.plot_rasters(sorting, time_range=(0, 40))
 w_rs.ax.set_ylabel("Units")
 w_rs.ax.set_xlabel("Time [s]")
 w_rs.ax.set_yticks([])
-# w_rs.figure.savefig("microg1_1.png",dpi=300)
+w_rs.figure.savefig("microg1_1.svg",dpi=300)
 
 ###############################################################################
 
@@ -135,27 +135,27 @@ print('Num. events for unit 1seg0 = {}'.format(len(st)/40))
 
 # Quality control #############################################################
 
-we = si.extract_waveforms(recording=recording_preprocessed,
-                          sorting=sorting,
-                          folder='waveforms_mearec',
-                          sparse=False,
-                          ms_before=1,
-                          ms_after=2.,
-                          max_spikes_per_unit=500,
-                          n_jobs=1,
-                          chunk_durations='1s')
-print(we)
+# we = si.extract_waveforms(recording=recording_preprocessed,
+#                           sorting=sorting,
+#                           folder='waveforms_mearec',
+#                           sparse=False,
+#                           ms_before=1,
+#                           ms_after=2.,
+#                           max_spikes_per_unit=500,
+#                           n_jobs=1,
+#                           chunk_durations='1s')
+# print(we)
 
-firing_rates = compute_firing_rates(we)
-print(firing_rates)
-isi_violation_ratio, isi_violations_count = compute_isi_violations(we)
-print(isi_violation_ratio)
-snrs = compute_snrs(we)
-print(snrs)
+# firing_rates = compute_firing_rates(we)
+# print(firing_rates)
+# isi_violation_ratio, isi_violations_count = compute_isi_violations(we)
+# print(isi_violation_ratio)
+# snrs = compute_snrs(we)
+# print(snrs)
 
-pc = compute_principal_components(waveform_extractor=we, load_if_exists=True,
-                                     n_components=3, mode='by_channel_local')
-print(pc)
+# pc = compute_principal_components(waveform_extractor=we, load_if_exists=True,
+#                                      n_components=3, mode='by_channel_local')
+# print(pc)
 
-pc_metrics = calculate_pc_metrics(pc, metric_names=['nearest_neighbor'])
-print(pc_metrics)
+# pc_metrics = calculate_pc_metrics(pc, metric_names=['nearest_neighbor'])
+# print(pc_metrics)
