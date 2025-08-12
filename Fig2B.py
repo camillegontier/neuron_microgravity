@@ -9,6 +9,7 @@ Created on Sat Dec 23 18:42:59 2023
 
 from brian2 import *
 # %matplotlib qt
+matplotlib.rcParams.update({'font.size': 13})
 
 # Parameters ##################################################################
 
@@ -41,7 +42,7 @@ I_values = 102*pA
 
 # Synaptic parameters
 connect_prob = 0.02
-we = 0.3*mV
+we = 0.5*mV
 sigma = 1*mV
 tau_E = 0.01*second
 
@@ -88,16 +89,16 @@ print(np.std(burst_results))
 # Results #####################################################################
 
 fig,axs=plt.subplots(nrows=2,ncols=1,sharex=True)
-axs[0].plot(0.001*M.t/ms,M.V[0]/mV)
+axs[0].plot(0.001*M.t/ms,M.V[0]/mV,c='tab:blue')
 axs[0].axhline(y=VT/mV,linestyle='--',c='k')
 axs[1].axhline(y=VT/mV,linestyle='--',c='k')
 
-axs[1].plot(0.001*M.t/ms,M.V[1]/mV)
+axs[1].plot(0.001*M.t/ms,M.V[1]/mV,c='tab:blue')
 axs[1].set_xlabel('Time [s]')
 axs[0].set_ylabel('V [mV]')
 axs[1].set_ylabel('V [mV]')
 axs[0].grid()
 axs[1].grid()
 fig.tight_layout()
-savefig("Fig3B.png", dpi=200) 
+savefig("Fig2B.svg", dpi=300) 
 

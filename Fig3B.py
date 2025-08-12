@@ -9,6 +9,7 @@ Created on Mon May 27 14:28:36 2024
 
 from brian2 import *
 # %matplotlib qt
+matplotlib.rcParams.update({'font.size': 13})
 
 # Parameters ##################################################################
 
@@ -98,15 +99,15 @@ for n in range(n_samples):
 # Results #####################################################################
 
 fig,axs=plt.subplots(nrows=1,ncols=2,sharex=True)
-axs[0].plot(I_lambda/pA,np.mean(res_FR,axis=(0,1)))
+axs[0].plot(I_lambda/pA,np.mean(res_FR,axis=(0,1)),c='tab:blue')
 axs[0].fill_between(I_lambda/pA,
                       np.mean(res_FR,axis=(0,1))+np.std(res_FR,axis=(0,1))/np.sqrt((n_samples)), 
-                      np.mean(res_FR,axis=(0,1))-np.std(res_FR,axis=(0,1))/np.sqrt((n_samples)), alpha=0.2)
+                      np.mean(res_FR,axis=(0,1))-np.std(res_FR,axis=(0,1))/np.sqrt((n_samples)), alpha=0.2,color='tab:blue')
 
-axs[1].plot(I_lambda/pA,np.mean(res_bursts,axis=(0,1)))
+axs[1].plot(I_lambda/pA,np.mean(res_bursts,axis=(0,1)),c='tab:blue')
 axs[1].fill_between(I_lambda/pA,
                       np.mean(res_bursts,axis=(0,1))+np.std(res_bursts,axis=(0,1))/np.sqrt((n_samples)), 
-                      np.mean(res_bursts,axis=(0,1))-np.std(res_bursts,axis=(0,1))/np.sqrt((n_samples)), alpha=0.2)
+                      np.mean(res_bursts,axis=(0,1))-np.std(res_bursts,axis=(0,1))/np.sqrt((n_samples)), alpha=0.2,color='tab:blue')
 
 
 axs[0].set_xlabel(r'$I_{\lambda}$ [pA]' )
@@ -123,4 +124,4 @@ axs[0].grid()
 # axs[1].legend()
 axs[1].grid()
 fig.tight_layout()
-savefig("Fig4B.png", dpi=200) 
+savefig("Fig3B.svg", dpi=300) 

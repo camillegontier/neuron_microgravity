@@ -9,6 +9,7 @@ Created on Mon May 27 14:28:36 2024
 
 from brian2 import *
 # %matplotlib qt
+matplotlib.rcParams.update({'font.size': 13})
 
 # Parameters ##################################################################
 
@@ -89,4 +90,4 @@ for lambda_idx,I_lamb in enumerate(I_lambda):
     axs[0].set_ylabel('Units')
     
 fig.tight_layout()
-savefig("Fig4A.png", dpi=200) 
+savefig("Fig3A.svg", dpi=300) 
