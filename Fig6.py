@@ -106,7 +106,7 @@ for i in range(len(lambda_values)):
     grid()
 fig.tight_layout()
 
-savefig("Fig6.png", dpi=300)  
+savefig("FigS6.png", dpi=300)  
 
 # plt.figure()
 # for i in range(len(lambda_values)):
